@@ -1,0 +1,15 @@
+.card{
+
+  img{
+    width: auto;
+    height: 50%;
+  }
+
+  &__price {
+    color: #3936d9;
+    font-size: 22px;
+  }
+  button{
+    width: auto;
+  }
+}

@@ -1,0 +1,46 @@
+
+<div class="productForm" [ngSwitch]="action" >
+  <div *ngIf="product">
+    <div class="productForm__edit" action="edit" *ngSwitchCase="'edit'" >
+      <div class="productForm__container">
+        <mat-form-field appearance="fill">
+          <mat-label>title</mat-label>
+            <input matInput/>
+            <output matOutput>{{product.title}}</output>
+        </mat-form-field>
+      </div>
+      <div class="productForm__desc">
+        <mat-form-field appearance="fill">
+          <mat-label>{{action}}</mat-label>
+          <textarea matInput>{{product.description}}</textarea>
+        </mat-form-field>
+      </div>
+      <div class="productForm__img">
+          <img mat-card-image src="{{product.images[0]}}" alt="Photo of a Shiba Inu">
+      </div>
+    </div>
+  </div>
+  <div class="productForm__add" action="add" *ngSwitchCase="'add'" >
+    <div class="productForm__container">
+      <mat-form-field appearance="fill">
+        <mat-label>title</mat-label>
+          <input matInput/>
+          <output matOutput></output>
+      </mat-form-field>
+    </div>
+    <div class="productForm__desc">
+      <mat-form-field appearance="fill">
+        <mat-label>{{action}}</mat-label>
+        <textarea matInput></textarea>
+      </mat-form-field>
+    </div>
+    <div class="productForm__img">
+    </div>
+  </div>
+  <div *ngIf="product">
+    <div class="productForm__view" action="view" *ngSwitchCase="'view'" >
+      <app-card [product]="product" action="view"></app-card>
+  </div>
+
+  <div *ngSwitchDefault>output2</div>
+</div>

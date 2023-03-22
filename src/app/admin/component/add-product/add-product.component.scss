@@ -1,0 +1,13 @@
+.addForm{
+  // display: flex;
+     justify-content: space-between;
+     width: 100%;
+     flex-wrap: wrap;
+     gap: 30px;
+   &__body{
+
+     background-size: cover;
+     background-repeat: no-repeat;
+   }
+
+ }

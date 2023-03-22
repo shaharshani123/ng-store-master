@@ -1,0 +1,16 @@
+<div class="editForm" *ngIf="product">
+  <div class="editForm__title">
+    <h2 class="example-h2">Edit Form</h2>
+  </div>
+  <div class="editForm__body">
+    <app-product-form [product]="product" [action]="action"></app-product-form>
+  </div>
+  <div class="editForm__footer">
+  <div class="example-button-row">
+    <button mat-stroked-button color="primary">Confirm</button>
+  </div>
+  </div>
+</div>
+
+
+<!-- <app-product-form  [product]="product"></app-product-form> -->

@@ -1,0 +1,11 @@
+<div class="home">
+  <div class="home__banner">
+
+  </div>
+  <div class="home__products" *ngIf="products">
+    <div class="home__product" *ngFor="let product of products">
+      <app-card [product]="product" action="home">
+      </app-card>
+    </div>
+  </div>
+</div>

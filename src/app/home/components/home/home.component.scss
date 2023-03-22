@@ -1,0 +1,28 @@
+.home{
+  &__banner{
+    width: 100%;
+    height: 450px;
+    background: url('/assets/candyStore.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+
+
+    @media screen and (max-width:1366px) {
+      background-size: 100%;
+    }
+
+  }
+
+  &__products {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+
+  &__product {
+    width: 30%;
+  }
+
+}

@@ -1,0 +1,19 @@
+.header{
+  &__container{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+  }
+
+  &__left{
+    display: flex;
+    align-items: center;
+  }
+
+  &__search{
+    display: flex;
+    align-items: center;
+  }
+
+}

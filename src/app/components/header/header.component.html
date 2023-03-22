@@ -1,0 +1,41 @@
+
+<header class="header">
+  <mat-toolbar color="primary">
+    <div class="header__container">
+      <div class="header__left">
+        <button mat-icon-button >
+          <mat-icon>
+            menu
+          </mat-icon>
+        </button>
+        <button mat-icon-button [routerLink]="['']">
+          <mat-icon>
+            home
+          </mat-icon>
+        </button>
+        <span>NG Store </span>
+      </div>
+      <!-- <div class="header__search">
+        <form >
+          <mat-form-field >
+            <mat-icon>search</mat-icon>
+            <input matInput>
+          </mat-form-field>
+        </form>
+      </div> -->
+      <div class="header__right">
+        <button mat-icon-button>
+
+          <mat-icon>
+            shopping_cart
+          </mat-icon>
+        </button>
+        <button mat-icon-button [routerLink]="['admin']">
+          <mat-icon >
+            admin_panel_settings
+          </mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-toolbar>
+</header>
