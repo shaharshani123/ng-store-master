@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AdminModule } from './admin/admin.module';
 import { NgImageBrowserModule } from 'ng-image-browser';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { LoginComponent } from './components/login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -22,7 +24,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
   declarations: [
     AppComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,9 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     MaterialModule,
     HttpClientModule,
     AdminModule,
-    NgImageBrowserModule
+    NgImageBrowserModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
