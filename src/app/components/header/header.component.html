@@ -3,7 +3,7 @@
   <mat-toolbar color="primary">
     <div class="header__container">
       <div class="header__left">
-        <button mat-icon-button >
+        <button mat-icon-button  (click)="openSideBar()" >
           <mat-icon>
             menu
           </mat-icon>
@@ -39,3 +39,8 @@
     </div>
   </mat-toolbar>
 </header>
+
+<div class="sidebar__container">
+  <app-sidebar [isOpen]="sidebarOpen" (onCloseSidebar)="closeSidebar()">
+  </app-sidebar>
+</div>

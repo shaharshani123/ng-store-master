@@ -1,0 +1,39 @@
+.sidebar {
+  width: 300px;
+  height: 100vh;
+  background-color: #ffffff;
+  position: fixed;
+  top: 0;
+  left: -400px;
+  transition: 0.3s all ease;
+  z-index: 2;
+
+  &--open {
+    left: 0px;
+  }
+}
+
+button{
+  width: 200px !important;
+  margin-bottom: 10px;
+
+}
+
+.backdrop {
+  z-index: 1;
+  background-color: rgba(17, 17, 17, 0.4);
+
+  opacity: 0;
+  pointer-events: none;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: 0.3s all ease;
+
+  &--open {
+    pointer-events: all;
+    opacity: 1;
+  }
+}

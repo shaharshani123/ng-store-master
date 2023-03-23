@@ -15,7 +15,7 @@ import { ViewProductComponent } from './component/view-product/view-product.comp
     AdminComponent,
     EditProductComponent,
     AddProductComponent,
-    ViewProductComponent
+    ViewProductComponent,
   ],
   imports: [
     CommonModule,

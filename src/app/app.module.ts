@@ -12,6 +12,7 @@ import { MaterialModule } from './material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminModule } from './admin/admin.module';
 import { NgImageBrowserModule } from 'ng-image-browser';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 
 
@@ -20,7 +21,8 @@ import { NgImageBrowserModule } from 'ng-image-browser';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
