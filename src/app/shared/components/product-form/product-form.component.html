@@ -1,5 +1,50 @@
 
-<div class="productForm" [ngSwitch]="action" >
+ <h1 mat-dialog-title >Add Item:</h1>
+ <div mat-dialog-content>
+   <p>Id number:</p>
+   <mat-form-field appearance="fill">
+     <mat-label></mat-label>
+     <input matInput >
+   </mat-form-field>
+   <p>Item description</p>
+   <mat-form-field appearance="fill">
+     <mat-label></mat-label>
+     <input matInput >
+   </mat-form-field>
+   <p>Item price</p>
+   <mat-form-field appearance="fill">
+     <mat-label></mat-label>
+     <input matInput >
+   </mat-form-field>
+ </div>
+ <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Add</button>
+   <button mat-button [mat-dialog-close]="" cdkFocusInitial>Ok</button>
+ </div>
+
+<!-- <div class="productForm" [ngSwitch]="action" >
+  <h1 mat-dialog-title >Add Item:</h1>
+    <div mat-dialog-content>
+      <p>Id number:</p>
+      <mat-form-field appearance="fill">
+        <mat-label></mat-label>
+        <input matInput >
+      </mat-form-field>
+      <p>Item description</p>
+      <mat-form-field appearance="fill">
+        <mat-label></mat-label>
+        <input matInput >
+      </mat-form-field>
+      <p>Item price</p>
+      <mat-form-field appearance="fill">
+        <mat-label></mat-label>
+        <input matInput >
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+       <button mat-button (click)="onNoClick()">Add</button>
+      <button mat-button [mat-dialog-close]="" cdkFocusInitial>Ok</button>
+    </div>
   <div *ngIf="product">
     <div class="productForm__edit" action="edit" *ngSwitchCase="'edit'" >
       <div class="productForm__container">
@@ -42,5 +87,7 @@
       <app-card [product]="product" action="view"></app-card>
   </div>
 
-  <div *ngSwitchDefault>output2</div>
-</div>
+  <div *ngSwitchDefault>
+
+  </div>
+</div> -->

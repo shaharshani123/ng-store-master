@@ -1,9 +1,12 @@
 import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProductService } from 'src/app/product/services/product.service';
+import { ProductFormComponent } from 'src/app/shared/components/product-form/product-form.component';
 import { IProduct } from 'src/app/shared/models';
+import { AddProductComponent } from '../add-product/add-product.component';
 
 @Component({
   selector: 'app-admin',
@@ -22,17 +25,17 @@ export class AdminComponent implements AfterViewInit{
   @ViewChild(MatPaginator) paginator?: MatPaginator;
   @ViewChild(MatSort) sort?: MatSort;
   private _liveAnnouncer: any;
-
-  constructor(private productService: ProductService) {
+  public action?:string;
+  constructor(private productService: ProductService,public dialog: MatDialog) {
 
   }
 
   ngOnInit(){
     this.productService.getProducts$().subscribe((data)=>{
       this.initTable(data.products);
+
     });
-
-
+    this.productService.fetchProducts();
   }
 
   ngOnDestroy(): void {
@@ -91,5 +94,14 @@ export class AdminComponent implements AfterViewInit{
 
   initEditProduct(elem:IProduct[]):void{
     this.editProduct=elem;
+
+  }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ProductFormComponent, {
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 }
