@@ -1,0 +1,45 @@
+<div class="login">
+  <form #loginForm="ngForm" (submit)="onSubmit(loginForm)">
+    <div class="login__emailField">
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input
+          id="email"
+          type="email"
+          name="email"
+          matInput
+          placeholder="Ex. pat@example.com"
+          ngModel
+          required
+        />
+      </mat-form-field>
+    </div>
+    <div class="login__passwordField">
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input
+          id="password"
+          type="password"
+          name="password"
+          matInput
+          placeholder="*******"
+          ngModel
+          required
+        />
+      </mat-form-field>
+    </div>
+    <div class="login__roleField">
+      <mat-form-field appearance="fill">
+        <mat-label>Select an option</mat-label>
+        <mat-select name="role" ngModel disableRipple required>
+          <mat-option value="Admin" default>Admin</mat-option>
+          <mat-option  value="User">User</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="login__actions">
+      <button mat-raised-button type="submit" color="primary" [disabled]="!loginForm.valid">Log in</button>
+      <button mat-raised-button type="cancel" >Cancel</button>
+    </div>
+  </form>
+</div>

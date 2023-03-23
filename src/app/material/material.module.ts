@@ -13,6 +13,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { NgImageBrowserModule } from 'ng-image-browser';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -29,7 +30,8 @@ const modules :Array<any> = [
   MatMenuModule,
   NgImageBrowserModule,
   MatFormFieldModule,
-  MatDialogModule
+  MatDialogModule,
+  MatSelectModule
 
 ]
 
