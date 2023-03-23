@@ -6,7 +6,7 @@
 </mat-form-field>
 
 <div class="example-button-row">
-  <button mat-fab extended color="primary" [routerLink]="['/admin/add']">
+  <button mat-raised-button color="primary" (click)="openDialog()" >
     <mat-icon>add</mat-icon>
     Add Item
   </button>
