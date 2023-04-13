@@ -12,14 +12,18 @@ import { IProduct, IResponseProducts } from 'src/app/shared/models';
   providedIn: 'root',
 })
 export class ProductService {
-
+  private isAuth$:Subject<boolean> = new Subject();
   constructor(private http: HttpClient, private storageService:StorageService ) { }
 
   private productsSubjects$: BehaviorSubject<IResponseProducts> = new BehaviorSubject({
     products:[]
   });
 
-
+  public setEditProduct(product:IProduct, id:Number):void{
+    // this.storageService.setData('editProduct'+id,product);
+    // //this.isAuth$.next(true);
+    this.refreshProductsFromStorage(product,id);
+  }
 
   public getProducts$():Observable<IResponseProducts>{
     return this.productsSubjects$.asObservable()
@@ -41,6 +45,19 @@ export class ProductService {
 
   }
 
+  public refreshProductsFromStorage(productChange:IProduct,id:Number):void{
+    const existingData: IResponseProducts=this.storageService.getData('products');
+
+    const productIndex:number = this.productsSubjects$.value.products.findIndex(
+      (product)=>product.id ===id
+    );
+
+    existingData.products[productIndex] = productChange;
+
+    this.storageService.setData('products',existingData);
+
+    this.fetchProducts();
+  }
 
   public getProductsById$(id:number):Observable<IProduct[]>{
     //return of(PRODUCTS_MOCK)

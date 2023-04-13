@@ -1,6 +1,6 @@
 import { Component, Inject, Input,Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ProductService } from 'src/app/product/services/product.service';
 import { IProduct } from '../../models';
 
 @Component({
@@ -9,6 +9,9 @@ import { IProduct } from '../../models';
   styleUrls: ['./product-form.component.scss']
 })
 export class ProductFormComponent {
+
+  constructor(private productService:ProductService){}
+  private _product : IProduct;
   @Input() set product(product:IProduct){
     if(this.productForm){
       this.prePopulateForm(product);
@@ -16,8 +19,6 @@ export class ProductFormComponent {
     this._product = product;
   }
 
-
-  private _product : IProduct;
 
   get product():IProduct{
     return this._product;
@@ -43,12 +44,11 @@ export class ProductFormComponent {
   ngOnInit(){
     this.initForm(this.product);
   }
-  //@Output() protuctOut?:IProduct=this.product;
 
-  constructor(
-    // public dialogRef: MatDialogRef<ProductFormComponent>,
-    // @Inject(MAT_DIALOG_DATA) public data: IProduct[],
-  ) {}
+  public getControl(control:string):FormControl{
+    return this.productForm.controls[control] as FormControl;
+
+  }
 
   onNoClick(): void {
     //this.dialogRef.close();
@@ -74,5 +74,12 @@ export class ProductFormComponent {
 
   public onSubmit():void{
     console.log(this.productForm);
+    this.product = {
+      ...this.product,
+      ...this.productForm.value
+    }
+    //this.product=this._product;
+    this.productService.setEditProduct(this.product,this.product.id);
+
   }
 }

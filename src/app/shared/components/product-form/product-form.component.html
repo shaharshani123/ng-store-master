@@ -5,6 +5,11 @@
   <mat-form-field appearance="fill">
     <mat-label>title</mat-label>
     <input matInput formControlName="title">
+    <mat-error *ngIf="getControl('title').dirty
+    && !getControl('title').pristine
+    && !getControl('title').valid"
+    >The Title Is Not Valid
+    </mat-error>
   </mat-form-field>
 </p>
 <p>
@@ -12,12 +17,22 @@
     <mat-label>description</mat-label>
     <input matInput formControlName="description">
   </mat-form-field>
+  <mat-error *ngIf="getControl('description').dirty
+    && !getControl('description').pristine
+    && !getControl('description').valid"
+    >The Description Field is no valid
+    </mat-error>
 </p>
 <p>
   <mat-form-field appearance="fill">
     <mat-label>stock</mat-label>
     <input matInput formControlName="stock">
   </mat-form-field>
+  <mat-error *ngIf="getControl('stock').dirty
+  && !getControl('stock').pristine
+  && !getControl('stock').valid"
+  >The Stck Field is no valid
+  </mat-error>
 </p>
 <p>
   <mat-form-field appearance="fill">
@@ -51,7 +66,7 @@
   </mat-form-field>
 </p>
 
-    <button mat-raised-button type="submit" color="primary">Submit</button>
+    <button mat-raised-button type="submit" color="primary" [disabled]="!productForm.valid">Submit</button>
   </form>
 
 </div>

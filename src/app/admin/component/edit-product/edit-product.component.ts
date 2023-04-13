@@ -32,9 +32,9 @@ export class EditProductComponent implements OnInit,OnDestroy {
     //   })
     // );
     console.log(this.product);
-    setTimeout(()=>{
-      this.product = this.productService.getProdById(19);
-    },4000);
+    // setTimeout(()=>{
+    //   this.product = this.productService.getProdById(19);
+    // },4000);
   }
 
 
