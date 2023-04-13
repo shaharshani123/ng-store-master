@@ -1,15 +1,23 @@
 input
 {
-  width: 80% !important;
+  width: 100% !important;
   height: 100% !important;
 }
+
+mat-form-field{
+  width: 80%;
+  height: 100%;
+}
+
 img{
   width: 200px;
   height: 200px;
 }
-
 .productForm{
-  //display: flex;
+  display: block;
+  flex-direction: column;
+  align-items: flex-start;
 
 }
+
 

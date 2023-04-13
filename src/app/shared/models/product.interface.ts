@@ -28,9 +28,9 @@ export interface IProduct {
 
 export interface IResponseProducts{
   products: IProduct[];
-  total:number,
-  skip:number,
-  limit:30
+  total?:number,
+  skip?:number,
+  limit?:30
 }
 // export interface IRating{
 //   rate:number;

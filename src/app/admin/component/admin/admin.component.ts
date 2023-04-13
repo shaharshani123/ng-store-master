@@ -7,6 +7,7 @@ import { ProductService } from 'src/app/product/services/product.service';
 import { ProductFormComponent } from 'src/app/shared/components/product-form/product-form.component';
 import { IProduct } from 'src/app/shared/models';
 import { AddProductComponent } from '../add-product/add-product.component';
+import { EditProductComponent } from '../edit-product/edit-product.component';
 
 @Component({
   selector: 'app-admin',
@@ -94,9 +95,21 @@ export class AdminComponent implements AfterViewInit{
 
   initEditProduct(elem:IProduct[]):void{
     this.editProduct=elem;
+    // const index = this.dataSource.data.findIndex((el) => {
+    //   this.editProduct === elem;
+    // });
+    const dialogRef = this.dialog.open(EditProductComponent, {
+      data:elem,
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
   openDialog(): void {
+    this.action ="add";
+    console.log(this.action);
+
     const dialogRef = this.dialog.open(ProductFormComponent, {
     });
 

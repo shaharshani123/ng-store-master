@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {Observable, of, Subject } from 'rxjs';
+import {BehaviorSubject, Observable, of, Subject } from 'rxjs';
 import { Routes } from 'src/app/core/API';
 import { StorageService } from 'src/app/core/services/storage.service';
 import { IProduct, IResponseProducts } from 'src/app/shared/models';
@@ -15,7 +15,11 @@ export class ProductService {
 
   constructor(private http: HttpClient, private storageService:StorageService ) { }
 
-  private productsSubjects$: Subject<IResponseProducts> = new Subject;
+  private productsSubjects$: BehaviorSubject<IResponseProducts> = new BehaviorSubject({
+    products:[]
+  });
+
+
 
   public getProducts$():Observable<IResponseProducts>{
     return this.productsSubjects$.asObservable()
@@ -37,10 +41,25 @@ export class ProductService {
 
   }
 
+
   public getProductsById$(id:number):Observable<IProduct[]>{
     //return of(PRODUCTS_MOCK)
     return this.http.get<IProduct[]>(Routes["singleProduct"](id));
   }
 
+  public getProdById(id:number):IProduct{
+    this.fetchProducts();
+    const productsList = this.productsSubjects$.value;
+
+    const productIndex:number = this.productsSubjects$.value.products.findIndex(
+      (product)=>product.id ===id
+    );
+    if(productsList.products[productIndex]){
+      return productsList.products[productIndex];
+    }else{
+      return null;
+    }
+
+  }
 
 }

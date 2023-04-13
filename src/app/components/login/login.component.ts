@@ -17,9 +17,10 @@ export class LoginComponent {
     , private storageService:StorageService ,public dialogRef:MatDialogRef<LoginComponent>){}
   public onSubmit(loginForm:NgForm){
 
-    console.log(loginForm.form.value.email);
+    console.log(loginForm.value);
     //this.userI.email =loginForm.form.value.email;
     this.authServiceService.logIn(loginForm.value);
     this.dialogRef.close();
+    this.authServiceService.isAuth(loginForm.value);
   }
 }

@@ -1,4 +1,4 @@
-<div class="editForm" *ngIf="product">
+<!-- <div class="editForm" *ngIf="product">
   <div class="editForm__title">
     <h2 class="example-h2">Edit Form</h2>
   </div>
@@ -10,6 +10,72 @@
     <button mat-stroked-button color="primary">Confirm</button>
   </div>
   </div>
-</div>
+</div> -->
+<!-- <div class="editForm" >
+  <div class="editForm">
+    <h2 class="example-h2">Edit Form</h2>
+  </div>
+  <div class="editForm__body">
+    <app-product-form [product]="product" [action]="action"></app-product-form>
+  </div>
+  <div class="editForm__footer">
+  <div class="example-button-row">
+    <button mat-stroked-button color="primary">Continue</button>
+  </div>
+  </div>
+</div> -->
 
-<!-- <app-product-form  [product]="product"></app-product-form> -->
+<!-- <h1 mat-dialog-title >Edit Item:</h1>
+    <div mat-dialog-content >
+      <p>Id number:</p>
+      <mat-form-field appearance="fill">
+        <mat-label></mat-label>
+        <input matInput >
+      </mat-form-field>
+      <p>Item description</p>
+      <mat-form-field appearance="fill">
+        <mat-label></mat-label>
+        <input matInput >
+      </mat-form-field>
+      <p>Item price</p>
+      <mat-form-field appearance="fill">
+        <mat-label></mat-label>
+        <input matInput >
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+       <button mat-button>Edit</button>
+      <button mat-button [mat-dialog-close]="" cdkFocusInitial>Ok</button>
+    </div> -->
+<!-- <app-product-form></app-product-form> -->
+
+
+<div class="editForm" *ngIf="product else noProduct">
+  <div class="editForm">
+    <h2 class="example-h2">Edit Form</h2>
+  </div>
+  <div class="editForm__body">
+    <app-product-form [product]="product" [action]="action"></app-product-form>
+  </div>
+  <div class="editForm__footer">
+  <div class="example-button-row">
+    <!-- <button mat-stroked-button color="primary">Add</button> -->
+  </div>
+  </div>
+</div>
+<ng-template #noProduct>
+  <h1>Sorry No Product!!!</h1>
+</ng-template>
+<!-- <div class="editForm" >
+  <div class="editForm">
+    <h2 class="example-h2">ADD Form</h2>
+  </div>
+  <div class="editForm__body">
+    <app-product-form [product]="product" [action]="action"></app-product-form>
+  </div>
+  <div class="editForm__footer">
+  <div class="example-button-row">
+    <button mat-stroked-button color="primary">Add</button>
+  </div>
+  </div>
+</div> -->

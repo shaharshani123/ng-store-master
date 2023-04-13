@@ -11,6 +11,7 @@ import { IProduct } from 'src/app/shared/models';
 export class ViewProductComponent {
   public action:string="view";
   public product?:IProduct;
+  public id:String='';
 
   constructor(private productService: ProductService,private route: ActivatedRoute) {
 

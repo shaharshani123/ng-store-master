@@ -1,93 +1,59 @@
 
- <h1 mat-dialog-title >Add Item:</h1>
- <div mat-dialog-content>
-   <p>Id number:</p>
-   <mat-form-field appearance="fill">
-     <mat-label></mat-label>
-     <input matInput >
-   </mat-form-field>
-   <p>Item description</p>
-   <mat-form-field appearance="fill">
-     <mat-label></mat-label>
-     <input matInput >
-   </mat-form-field>
-   <p>Item price</p>
-   <mat-form-field appearance="fill">
-     <mat-label></mat-label>
-     <input matInput >
-   </mat-form-field>
- </div>
- <div mat-dialog-actions>
-    <button mat-button (click)="onNoClick()">Add</button>
-   <button mat-button [mat-dialog-close]="" cdkFocusInitial>Ok</button>
- </div>
+<div class="productForm" *ngIf="productForm">
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()" >
+<p>
+  <mat-form-field appearance="fill">
+    <mat-label>title</mat-label>
+    <input matInput formControlName="title">
+  </mat-form-field>
+</p>
+<p>
+  <mat-form-field appearance="fill">
+    <mat-label>description</mat-label>
+    <input matInput formControlName="description">
+  </mat-form-field>
+</p>
+<p>
+  <mat-form-field appearance="fill">
+    <mat-label>stock</mat-label>
+    <input matInput formControlName="stock">
+  </mat-form-field>
+</p>
+<p>
+  <mat-form-field appearance="fill">
+    <mat-label>price</mat-label>
+    <input matInput formControlName="price">
+  </mat-form-field>
+</p>
+<p>
+  <mat-form-field appearance="fill">
+    <mat-label>rating</mat-label>
+    <input matInput formControlName="rating">
+  </mat-form-field>
+</p>
+<p>
+  <mat-form-field appearance="fill">
+    <mat-label>thumbnail</mat-label>
+    <input matInput formControlName="thumbnail">
+    <img mat-card-image src="{{this.product.thumbnail}}" alt="{{this.product.title}}">
+  </mat-form-field>
+</p>
+<p>
+  <mat-form-field appearance="fill">
+    <mat-label>category</mat-label>
+    <input matInput formControlName="category">
+  </mat-form-field>
+</p>
+<p>
+  <mat-form-field appearance="fill">
+    <mat-label>brand</mat-label>
+    <input matInput formControlName="brand">
+  </mat-form-field>
+</p>
 
-<!-- <div class="productForm" [ngSwitch]="action" >
-  <h1 mat-dialog-title >Add Item:</h1>
-    <div mat-dialog-content>
-      <p>Id number:</p>
-      <mat-form-field appearance="fill">
-        <mat-label></mat-label>
-        <input matInput >
-      </mat-form-field>
-      <p>Item description</p>
-      <mat-form-field appearance="fill">
-        <mat-label></mat-label>
-        <input matInput >
-      </mat-form-field>
-      <p>Item price</p>
-      <mat-form-field appearance="fill">
-        <mat-label></mat-label>
-        <input matInput >
-      </mat-form-field>
-    </div>
-    <div mat-dialog-actions>
-       <button mat-button (click)="onNoClick()">Add</button>
-      <button mat-button [mat-dialog-close]="" cdkFocusInitial>Ok</button>
-    </div>
-  <div *ngIf="product">
-    <div class="productForm__edit" action="edit" *ngSwitchCase="'edit'" >
-      <div class="productForm__container">
-        <mat-form-field appearance="fill">
-          <mat-label>title</mat-label>
-            <input matInput/>
-            <output matOutput>{{product.title}}</output>
-        </mat-form-field>
-      </div>
-      <div class="productForm__desc">
-        <mat-form-field appearance="fill">
-          <mat-label>{{action}}</mat-label>
-          <textarea matInput>{{product.description}}</textarea>
-        </mat-form-field>
-      </div>
-      <div class="productForm__img">
-          <img mat-card-image src="{{product.images[0]}}" alt="Photo of a Shiba Inu">
-      </div>
-    </div>
-  </div>
-  <div class="productForm__add" action="add" *ngSwitchCase="'add'" >
-    <div class="productForm__container">
-      <mat-form-field appearance="fill">
-        <mat-label>title</mat-label>
-          <input matInput/>
-          <output matOutput></output>
-      </mat-form-field>
-    </div>
-    <div class="productForm__desc">
-      <mat-form-field appearance="fill">
-        <mat-label>{{action}}</mat-label>
-        <textarea matInput></textarea>
-      </mat-form-field>
-    </div>
-    <div class="productForm__img">
-    </div>
-  </div>
-  <div *ngIf="product">
-    <div class="productForm__view" action="view" *ngSwitchCase="'view'" >
-      <app-card [product]="product" action="view"></app-card>
-  </div>
+    <button mat-raised-button type="submit" color="primary">Submit</button>
+  </form>
 
-  <div *ngSwitchDefault>
+</div>
 
-  </div>
-</div> -->
+

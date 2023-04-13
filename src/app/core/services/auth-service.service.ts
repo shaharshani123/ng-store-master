@@ -11,16 +11,20 @@ export class AuthServiceService {
   private isAuth$:Subject<boolean> = new Subject();
 
   constructor(private storageService:StorageService) {
-
   }
 
   public logIn(user:IUser):void{
       console.log(user);
-      this.storageService.setData('user',user);
+      this.storageService.setData(user.role.toLocaleLowerCase(),user);
       this.isAuth$.next(true);
   }
   public isAuth(user:IUser):void{
-    const rawData = localStorage.getItem('user');
+    const user1:IUser=this.storageService.getData(user.role.toLowerCase());
+    if(user.email.toUpperCase() == user1.email.toUpperCase() && user.role.toUpperCase() == user1.role.toUpperCase()&& user.pass == user1.pass){
+      console.log("the "+ user.role +" exist");
+    }else{
+      console.log("the " + " " + user.email +" " + user.role +" exist");
+    }
   }
 
   public getUser():IUser{

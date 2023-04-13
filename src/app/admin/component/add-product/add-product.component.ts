@@ -7,6 +7,6 @@ import { IProduct } from 'src/app/shared/models';
   styleUrls: ['./add-product.component.scss']
 })
 export class AddProductComponent {
-  public product?:IProduct[];
+  public product?:IProduct;
   public action:string ="add";
 }
