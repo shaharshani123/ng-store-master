@@ -16,7 +16,7 @@ import { MaterialModule } from '../material/material.module';
     MaterialModule
   ],
   exports:[
-    HomeComponent
+    HomeComponent,
   ]
 })
 export class HomeModule { }

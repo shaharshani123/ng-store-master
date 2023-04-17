@@ -20,9 +20,20 @@ export class ProductService {
   });
 
   public setEditProduct(product:IProduct, id:Number):void{
-    // this.storageService.setData('editProduct'+id,product);
-    // //this.isAuth$.next(true);
     this.refreshProductsFromStorage(product,id);
+  }
+
+  public getProductsLength():number{
+    return this.storageService.getData('products').products.length;
+  }
+
+  public addProduct(product:IProduct):void{
+    const existingData: IResponseProducts=this.storageService.getData('products');
+    existingData.limit++;
+    existingData.products.push(product);
+
+    this.storageService.setData('products',existingData);
+    this.fetchProducts();
   }
 
   public getProducts$():Observable<IResponseProducts>{
@@ -62,6 +73,15 @@ export class ProductService {
   public getProductsById$(id:number):Observable<IProduct[]>{
     //return of(PRODUCTS_MOCK)
     return this.http.get<IProduct[]>(Routes["singleProduct"](id));
+  }
+
+  public getProductCategory$():string[]{
+    //return of(PRODUCTS/CTEGORIES_MOCK)
+    this.http.get<string[]>(Routes["getCategories"])
+    .subscribe(data=>{
+      this.storageService.setData('categories',data);
+    });
+    return this.storageService.getData('categories');
   }
 
   public getProdById(id:number):IProduct{

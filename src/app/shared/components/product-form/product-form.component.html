@@ -50,13 +50,16 @@
   <mat-form-field appearance="fill">
     <mat-label>thumbnail</mat-label>
     <input matInput formControlName="thumbnail">
-    <img mat-card-image src="{{this.product.thumbnail}}" alt="{{this.product.title}}">
+    <!-- <img mat-card-image src="{{this.product.thumbnail}}" alt="{{this.product.title}}"> -->
   </mat-form-field>
 </p>
 <p>
   <mat-form-field appearance="fill">
     <mat-label>category</mat-label>
-    <input matInput formControlName="category">
+    <mat-select formControlName="category" [formControl]="categoriesList" *ngIf="action=='add'" multiple>
+      <mat-option *ngFor="let item of categoryList">{{item}}</mat-option>
+    </mat-select>
+    <input matInput formControlName="category" *ngIf="action=='edit'">
   </mat-form-field>
 </p>
 <p>

@@ -8,5 +8,16 @@ import { IProduct } from 'src/app/shared/models';
 })
 export class AddProductComponent {
   public product?:IProduct;
-  public action:string ="add";
+  public action?:string;
+  constructor() {
+
+  }
+  ngOnInit(){
+
+
+  }
+
+
+  ngOnDestroy(): void {
+  }
 }

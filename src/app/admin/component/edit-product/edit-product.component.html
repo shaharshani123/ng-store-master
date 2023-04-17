@@ -51,11 +51,11 @@
 
 
 <div class="editForm" *ngIf="product else noProduct">
-  <div class="editForm">
+  <div class="editForm_header">
     <h2 class="example-h2">Edit Form</h2>
   </div>
   <div class="editForm__body">
-    <app-product-form [product]="product" [action]="action"></app-product-form>
+    <app-product-form [product]="product" [action]="'edit'"></app-product-form>
   </div>
   <div class="editForm__footer">
   <div class="example-button-row">

@@ -7,6 +7,7 @@ import { ViewProductComponent } from './admin/component/view-product/view-produc
 import { HomeComponent } from './home/components/home/home.component';
 import { ProductComponent } from './product/componenets/product/product.component';
 import { ProductFormComponent } from './shared/components/product-form/product-form.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path:"admin/edit/:id",component:EditProductComponent},
   {path:"admin/add",component:AddProductComponent},
   {path:"admin/view/:id",component:ViewProductComponent},
+  {path:"admin/shoppingCart",component:ShoppingCartComponent},
 ];
 
 @NgModule({

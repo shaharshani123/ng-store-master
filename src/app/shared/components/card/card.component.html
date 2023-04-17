@@ -3,29 +3,45 @@
     <mat-card-header>
       <ng-content select=".header"></ng-content>
     </mat-card-header>
-    <img mat-card-image class="card__img"
+    <div *ngIf="product.images; else defaultPic">
+      <img mat-card-image class="card__img"
       src="{{product.images[0]}}"
       alt="{{product.description}}">
+    </div>
+    <ng-template #defaultPic>
+      <img mat-card-image class="card__img"
+      src="https://media.istockphoto.com/id/1256055447/vector/a-doodle-style-phone-isolated-on-a-white-background-image-with-a-black-line-use-it-as-an.jpg?s=612x612&w=0&k=20&c=GWzwVcvX8DB_icKe_C4TvGYHapiE9xPxfPRLAWAs9F4="
+      alt="{{product.description}}">
+    </ng-template>
+
     <mat-card-content class="card__dsc">
       {{product.description}}
 
     </mat-card-content>
     <mat-card-actions class="card__price">
       {{product.price | currency}}
-      <button mat-button >LIKE</button>
-      <button mat-button >ADD TO CART</button>
+      <button mat-button (click)="deleteFromCart(product);">LIKE</button>
+      <button mat-button (click)="addToCart(product);">ADD TO CART</button>
     </mat-card-actions>
   </mat-card>
-  <mat-card class="example-card" *ngSwitchCase= "'view'">
+  <!-- <mat-card class="example-card" *ngSwitchCase= "'view'">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title>{{product.title}}</mat-card-title>
         <mat-card-subtitle>{{product.category}}</mat-card-subtitle>
       <ng-content select=".header"></ng-content>
     </mat-card-header>
-    <img mat-card-image class="card__img"
+    <div *ngIf="product.images; else defaultPic">
+      <img mat-card-image class="card__img"
       src="{{product.images[0]}}"
       alt="{{product.description}}">
+    </div>
+    <ng-template #defaultPic>
+      <img mat-card-image class="card__img"
+      src="https://media.istockphoto.com/id/1256055447/vector/a-doodle-style-phone-isolated-on-a-white-background-image-with-a-black-line-use-it-as-an.jpg?s=612x612&w=0&k=20&c=GWzwVcvX8DB_icKe_C4TvGYHapiE9xPxfPRLAWAs9F4="
+      alt="{{product.description}}">
+    </ng-template>
+
     <mat-card-content class="card__dsc">
       {{product.description}}
     </mat-card-content>
@@ -33,6 +49,6 @@
       {{product.price | currency}}
 
     </mat-card-actions>
-  </mat-card>
+  </mat-card> -->
 </div>
 

@@ -106,15 +106,15 @@ export class AdminComponent implements AfterViewInit{
       console.log('The dialog was closed');
     });
   }
-  openDialog(): void {
-    this.action ="add";
-    console.log(this.action);
+  // openDialog(): void {
+  //   this.action ="add";
+  //   console.log(this.action);
 
-    const dialogRef = this.dialog.open(ProductFormComponent, {
-    });
+  //   const dialogRef = this.dialog.open(ProductFormComponent, {
+  //   });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
-  }
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     console.log('The dialog was closed');
+  //   });
+  // }
 }

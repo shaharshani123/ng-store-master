@@ -25,16 +25,9 @@ export class EditProductComponent implements OnInit,OnDestroy {
     const id = this.route.snapshot.paramMap.get('id') || "";
     console.log(id);
     this.product = this.productService.getProdById(Number(id));
-    // this.sub.add(
-    //   this.productService.getProductsById$(Number(id)).subscribe((data:any)=>{
-    //     console.log(data.description);
 
-    //   })
-    // );
     console.log(this.product);
-    // setTimeout(()=>{
-    //   this.product = this.productService.getProdById(19);
-    // },4000);
+
   }
 
 
