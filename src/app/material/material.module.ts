@@ -14,6 +14,8 @@ import { NgImageBrowserModule } from 'ng-image-browser';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
+import {MatListModule} from '@angular/material/list';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 
@@ -31,7 +33,9 @@ const modules :Array<any> = [
   NgImageBrowserModule,
   MatFormFieldModule,
   MatDialogModule,
-  MatSelectModule
+  MatSelectModule,
+  MatListModule,
+  MatCheckboxModule
 
 ]
 

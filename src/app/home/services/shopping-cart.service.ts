@@ -40,5 +40,7 @@ export class ShoppingCartService {
       });
      this.shoppingCart$.value['products'].splice(productIndex,1);
      this.shoppingCart$.value['count']--;
+     console.log(this.shoppingCart$.value);
+     this.storageService.setData('shoppingCart',this.shoppingCart$.value);
   }
 }

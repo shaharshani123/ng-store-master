@@ -16,6 +16,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { ExtantionComponent } from './components/extantion/extantion.component';
 
 
 
@@ -27,7 +28,8 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
     HeaderComponent,
     SidebarComponent,
     LoginComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    ExtantionComponent
   ],
   imports: [
     BrowserModule,

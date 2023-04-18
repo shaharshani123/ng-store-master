@@ -1,0 +1,11 @@
+<ng-template let-Data>
+<h2>{{data.product}}</h2>
+</ng-template>
+<h2 mat-dialog-title>{{data.msg}} : {{data.product[0].title}}</h2>
+<mat-dialog-content>title: {{data.product[0].title}}</mat-dialog-content>
+<mat-dialog-content>id: {{data.product[0].description}}</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+  <button mat-button [mat-dialog-close]="data">Delete</button>
+</mat-dialog-actions>
