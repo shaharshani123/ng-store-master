@@ -17,7 +17,8 @@ import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ExtantionComponent } from './components/extantion/extantion.component';
-
+import { NgxsModule } from '@ngxs/store';
+import { AppState } from './core/state/app-state';
 
 
 
@@ -41,7 +42,8 @@ import { ExtantionComponent } from './components/extantion/extantion.component';
     AdminModule,
     NgImageBrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxsModule.forRoot(AppState),
   ],
   providers: [],
   bootstrap: [AppComponent]

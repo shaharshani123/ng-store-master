@@ -14,6 +14,11 @@ export class ShoppingCartService {
     count:0
   });
 
+  private wishList$: BehaviorSubject<IResponseProducts> = new BehaviorSubject({
+    products:[],
+    count:0
+  });
+
   public shoppingCartList: IProduct[];
 
   public addToShoppingCart(product:IProduct):void{
@@ -32,6 +37,8 @@ export class ShoppingCartService {
 
   }
 
+
+
   public deletFromShoppingCart(productDelete:IProduct):void{
     // const existingData: IResponseProducts=this.storageService.getData('shoppingCart');
     console.log("indelete");
@@ -42,5 +49,23 @@ export class ShoppingCartService {
      this.shoppingCart$.value['count']--;
      console.log(this.shoppingCart$.value);
      this.storageService.setData('shoppingCart',this.shoppingCart$.value);
+  }
+
+  public addToWishList(product:IProduct):void{
+    if(product){
+      const existingData: IProduct[]=this.storageService.getData('wishList');
+
+      if(existingData){
+        console.log("there is ExisitingData");
+        console.log(this.wishList$.value['count']);
+        this.shoppingCart$.value['products'][++this.wishList$.value['count']] = product;
+        this.storageService.setData('wishList',this.wishList$.value);
+      }else{
+        console.log("there is ExisitingData");
+        this.wishList$.value['products'][0] = product;
+        this.storageService.setData('wishList',this.wishList$.value);
+      }
+    }
+
   }
 }

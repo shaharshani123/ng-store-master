@@ -4,7 +4,13 @@
   </div>
   <div class="home__products" *ngIf="products">
     <div class="home__product" *ngFor="let product of products">
-      <app-card [product]="product" action="home">
+      <app-card
+      [product]="product"
+       action="home"
+       [isInCart]="isInCart(product.id) | async"
+       (addToCart)="addToCart($event)"
+       (onRemoveFromCart)="removeFromCart(product.id)"
+       >
       </app-card>
     </div>
   </div>

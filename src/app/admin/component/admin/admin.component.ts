@@ -8,6 +8,8 @@ import { ProductFormComponent } from 'src/app/shared/components/product-form/pro
 import { IProduct } from 'src/app/shared/models';
 import { AddProductComponent } from '../add-product/add-product.component';
 import { EditProductComponent } from '../edit-product/edit-product.component';
+import { ViewProductComponent } from '../view-product/view-product.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-admin',
@@ -27,10 +29,11 @@ export class AdminComponent implements AfterViewInit{
   @ViewChild(MatSort) sort?: MatSort;
   private _liveAnnouncer: any;
   public action?:string;
-  constructor(private productService: ProductService,public dialog: MatDialog) {
+  constructor(private productService: ProductService,
+    public dialog: MatDialog) {
 
   }
-
+  private sub: Subscription = new Subscription();
   ngOnInit(){
     this.productService.getProducts$().subscribe((data)=>{
       this.initTable(data.products);
@@ -40,7 +43,7 @@ export class AdminComponent implements AfterViewInit{
   }
 
   ngOnDestroy(): void {
-
+    this.sub.unsubscribe();
   }
   ngAfterViewInit() {
     this.initFilterSortandPaging();
@@ -70,6 +73,17 @@ export class AdminComponent implements AfterViewInit{
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     }
+  }
+
+  public openDialog(): void {
+    const dialogRef = this.dialog.open(ProductFormComponent, {});
+    this.sub.add(
+      dialogRef.afterClosed().subscribe((result: IProduct) => {
+        console.log(result);
+        console.log('The dialog was closed');
+        this.productService.addNewProduct(result);
+      })
+    );
   }
 
   private initTable(data:IProduct[]):void{
@@ -106,15 +120,13 @@ export class AdminComponent implements AfterViewInit{
       console.log('The dialog was closed');
     });
   }
-  // openDialog(): void {
-  //   this.action ="add";
-  //   console.log(this.action);
+  initViewProduct(elem:IProduct):void{
+    const dialogRef = this.dialog.open(ViewProductComponent, {
+      data:elem,
+    });
 
-  //   const dialogRef = this.dialog.open(ProductFormComponent, {
-  //   });
-
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log('The dialog was closed');
-  //   });
-  // }
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
 }

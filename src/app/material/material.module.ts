@@ -16,6 +16,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
 import {MatListModule} from '@angular/material/list';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { NgxsModule } from '@ngxs/store';
 
 
 
@@ -35,7 +36,8 @@ const modules :Array<any> = [
   MatDialogModule,
   MatSelectModule,
   MatListModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  NgxsModule
 
 ]
 

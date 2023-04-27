@@ -33,7 +33,17 @@ public openDialog(): void {
 public openShoppingCartDialog():void{
   this.shoppingCart = this.storageService.getData('shoppingCart');
   const dialogRef = this.dialog.open(ShoppingCartComponent, {
-    data:this.shoppingCart
+    data:{products:this.shoppingCart,type:"shopping_cart"}
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed');
+  });
+}
+public openWishListDialog():void{
+  this.shoppingCart = this.storageService.getData('wishList');
+  const dialogRef = this.dialog.open(ShoppingCartComponent, {
+    data:{products:this.shoppingCart,type:"wishList"}
   });
 
   dialogRef.afterClosed().subscribe(result => {

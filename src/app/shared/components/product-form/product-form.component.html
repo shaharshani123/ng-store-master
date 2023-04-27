@@ -56,10 +56,10 @@
 <p>
   <mat-form-field appearance="fill">
     <mat-label>category</mat-label>
-    <mat-select formControlName="category" [formControl]="categoriesList" *ngIf="action=='add'" multiple>
+    <mat-select formControlName="category" [formControl]="categoriesList" *ngIf="action!='view'" multiple>
       <mat-option *ngFor="let item of categoryList">{{item}}</mat-option>
     </mat-select>
-    <input matInput formControlName="category" *ngIf="action=='edit'">
+    <input matInput formControlName="category" *ngIf="action=='view'">
   </mat-form-field>
 </p>
 <p>

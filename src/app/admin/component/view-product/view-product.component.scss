@@ -1,0 +1,23 @@
+.viewForm{
+  justify-content: space-between;
+    width: 600px;
+    flex-wrap: wrap;
+    gap: 30px;
+    &__body{
+
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    &__products {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    &__product {
+      width: 30%;
+    }
+}

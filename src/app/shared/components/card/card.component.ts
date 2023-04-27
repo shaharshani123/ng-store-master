@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IProduct } from '../../models';
 import { ShoppingCartService } from 'src/app/home/services/shopping-cart.service';
 import { ShoppingCartComponent } from 'src/app/components/shopping-cart/shopping-cart.component';
@@ -14,12 +14,27 @@ export class CardComponent {
 
  @Input() product?:IProduct;
  @Input() action?:string;
- private shopCartService :ShoppingCartService;
+ @Input() isInCart: boolean;
 
- public addToCart(product:IProduct):void{
-    this.shoppingCartService.addToShoppingCart(product);
+ @Output() addToCart: EventEmitter<IProduct> = new EventEmitter();
+ @Output() onRemoveFromCart:EventEmitter<number> = new EventEmitter();
+
+ public onAddToCart(product:IProduct):void{
+  console.log("onAddToCart");
+  this.addToCart.emit(product);
  }
- public deleteFromCart(product:IProduct):void{
-    this.shoppingCartService.deletFromShoppingCart(product);
+
+ public removeFromCart(id:number):void{
+  this.onRemoveFromCart.emit(id);
+ }
+ public addToCartnew(product:IProduct):void{
+  this.product = {
+    ...this.product,
+    ...product
+  }
+    this.shoppingCartService.addToShoppingCart(this.product);
+ }
+ public addToWishList(product:IProduct):void{
+    this.shoppingCartService.addToWishList(product);
  }
 }

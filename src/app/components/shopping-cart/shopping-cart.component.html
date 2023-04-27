@@ -18,11 +18,23 @@
 
 </div> -->
 <div class="shopCart" (submit)="onSubmit()">
-  <div class="shopCart__header">
-    <h3><span>Shoppong Cart</span><mat-icon>
-      shopping_cart
-    </mat-icon></h3>
+  <div *ngIf="data.type=='shopping_cart'">
+    <div class="shopCart__header">
+      <h3><span>Shoppong Cart</span><mat-icon>
+        shopping_cart
+      </mat-icon></h3>
+    </div>
   </div>
+  <div *ngIf="data.type=='wishList'">
+    <div class="shopCart__header"  >
+      <h3><span>Wish-List</span><mat-icon>
+        favorite
+      </mat-icon></h3>
+    </div>
+  </div>
+
+
+
   <div class="shopCart__content">
     <mat-card>
       <mat-card-content>

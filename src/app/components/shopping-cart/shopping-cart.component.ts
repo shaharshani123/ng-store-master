@@ -1,7 +1,7 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { Component, Input } from '@angular/core';
+import { Component, Input,Inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm } from '@angular/forms';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { AuthServiceService } from 'src/app/core/services/auth-service.service';
@@ -28,13 +28,27 @@ export class ShoppingCartComponent {
     public dialogRef:MatDialogRef<ShoppingCartComponent>,
     private route: ActivatedRoute,
     private storageService:StorageService,
+    @Inject(MAT_DIALOG_DATA) public data:{
+      product:IProduct[],
+      type:string,
+    }
     ){}
   public ngOnInit(){
-    this._shopPords = this.storageService.getData('shoppingCart');
-    this.productsInCart = this._shopPords;
-    console.log(this.productsInCart);
-    ELEMENT_DATA = this.productsInCart['products'];
-    console.log(ELEMENT_DATA);
+    console.log(this.data.type);
+    if(this.data.type == "shopping_cart"){
+      this._shopPords = this.storageService.getData('shoppingCart');
+      this.productsInCart = this._shopPords;
+      console.log(this.productsInCart);
+      ELEMENT_DATA = this.productsInCart['products'];
+      console.log(ELEMENT_DATA);
+    }else{
+      this._shopPords = this.storageService.getData('wishList');
+      this.productsInCart = this._shopPords;
+      console.log(this.productsInCart);
+      ELEMENT_DATA = this.productsInCart['products'];
+      console.log(ELEMENT_DATA);
+    }
+
   }
 
 
@@ -81,12 +95,14 @@ export class ShoppingCartComponent {
 
   public openDeleteDialog():void{
     const dialogRef = this.dialogExt.open(ExtantionComponent, {
-      data: {product:this.selection.selected, type:"Delete",msg:"Are You Sure Want Delete This Item?"}
+      data: {product:this.selection.selected, type:"Delete",msg:"Are You Sure Want Delete This Item"}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
-      this.deleteFromCart();
+      if(result){
+        this.deleteFromCart();
+      }
     });
   }
 }
